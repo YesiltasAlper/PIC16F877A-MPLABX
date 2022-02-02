@@ -1,0 +1,1 @@
+Uygulamada bipolar step motor 8 adim (yarim adim) olarak dondurulmustur.

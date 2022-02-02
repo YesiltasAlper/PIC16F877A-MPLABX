@@ -1,0 +1,609 @@
+
+
+Microchip MPLAB XC8 Assembler V2.32 build 20210201212658 
+                                                                                               Wed Feb 02 01:30:23 2022
+
+Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1 
+     1                           	processor	16F877A
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     5                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     6                           	psect	maintext,global,class=CODE,split=1,delta=2
+     7                           	psect	text1,local,class=CODE,merge=1,delta=2
+     8                           	psect	intentry,global,class=CODE,delta=2
+     9                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    10                           	dabs	1,0x7E,2
+    11  0000                     
+    12                           ; Version 2.20
+    13                           ; Generated 12/02/2020 GMT
+    14                           ; 
+    15                           ; Copyright © 2020, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    16                           ; All rights reserved.
+    17                           ; 
+    18                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    19                           ; 
+    20                           ; Redistribution and use in source and binary forms, with or without modification, are
+    21                           ; permitted provided that the following conditions are met:
+    22                           ; 
+    23                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    24                           ;        conditions and the following disclaimer.
+    25                           ; 
+    26                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    27                           ;        of conditions and the following disclaimer in the documentation and/or other
+    28                           ;        materials provided with the distribution.
+    29                           ; 
+    30                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    31                           ;        software without specific prior written permission.
+    32                           ; 
+    33                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    34                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    35                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    36                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    37                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    38                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    39                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    40                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    41                           ; 
+    42                           ; 
+    43                           ; Code-generator required, PIC16F877A Definitions
+    44                           ; 
+    45                           ; SFR Addresses
+    46  0000                     	;# 
+    47  0001                     	;# 
+    48  0002                     	;# 
+    49  0003                     	;# 
+    50  0004                     	;# 
+    51  0005                     	;# 
+    52  0006                     	;# 
+    53  0007                     	;# 
+    54  0008                     	;# 
+    55  0009                     	;# 
+    56  000A                     	;# 
+    57  000B                     	;# 
+    58  000C                     	;# 
+    59  000D                     	;# 
+    60  000E                     	;# 
+    61  000E                     	;# 
+    62  000F                     	;# 
+    63  0010                     	;# 
+    64  0011                     	;# 
+    65  0012                     	;# 
+    66  0013                     	;# 
+    67  0014                     	;# 
+    68  0015                     	;# 
+    69  0015                     	;# 
+    70  0016                     	;# 
+    71  0017                     	;# 
+    72  0018                     	;# 
+    73  0019                     	;# 
+    74  001A                     	;# 
+    75  001B                     	;# 
+    76  001B                     	;# 
+    77  001C                     	;# 
+    78  001D                     	;# 
+    79  001E                     	;# 
+    80  001F                     	;# 
+    81  0081                     	;# 
+    82  0085                     	;# 
+    83  0086                     	;# 
+    84  0087                     	;# 
+    85  0088                     	;# 
+    86  0089                     	;# 
+    87  008C                     	;# 
+    88  008D                     	;# 
+    89  008E                     	;# 
+    90  0091                     	;# 
+    91  0092                     	;# 
+    92  0093                     	;# 
+    93  0094                     	;# 
+    94  0098                     	;# 
+    95  0099                     	;# 
+    96  009C                     	;# 
+    97  009D                     	;# 
+    98  009E                     	;# 
+    99  009F                     	;# 
+   100  010C                     	;# 
+   101  010D                     	;# 
+   102  010E                     	;# 
+   103  010F                     	;# 
+   104  018C                     	;# 
+   105  018D                     	;# 
+   106  0000                     	;# 
+   107  0001                     	;# 
+   108  0002                     	;# 
+   109  0003                     	;# 
+   110  0004                     	;# 
+   111  0005                     	;# 
+   112  0006                     	;# 
+   113  0007                     	;# 
+   114  0008                     	;# 
+   115  0009                     	;# 
+   116  000A                     	;# 
+   117  000B                     	;# 
+   118  000C                     	;# 
+   119  000D                     	;# 
+   120  000E                     	;# 
+   121  000E                     	;# 
+   122  000F                     	;# 
+   123  0010                     	;# 
+   124  0011                     	;# 
+   125  0012                     	;# 
+   126  0013                     	;# 
+   127  0014                     	;# 
+   128  0015                     	;# 
+   129  0015                     	;# 
+   130  0016                     	;# 
+   131  0017                     	;# 
+   132  0018                     	;# 
+   133  0019                     	;# 
+   134  001A                     	;# 
+   135  001B                     	;# 
+   136  001B                     	;# 
+   137  001C                     	;# 
+   138  001D                     	;# 
+   139  001E                     	;# 
+   140  001F                     	;# 
+   141  0081                     	;# 
+   142  0085                     	;# 
+   143  0086                     	;# 
+   144  0087                     	;# 
+   145  0088                     	;# 
+   146  0089                     	;# 
+   147  008C                     	;# 
+   148  008D                     	;# 
+   149  008E                     	;# 
+   150  0091                     	;# 
+   151  0092                     	;# 
+   152  0093                     	;# 
+   153  0094                     	;# 
+   154  0098                     	;# 
+   155  0099                     	;# 
+   156  009C                     	;# 
+   157  009D                     	;# 
+   158  009E                     	;# 
+   159  009F                     	;# 
+   160  010C                     	;# 
+   161  010D                     	;# 
+   162  010E                     	;# 
+   163  010F                     	;# 
+   164  018C                     	;# 
+   165  018D                     	;# 
+   166  000E                     _TMR1	set	14
+   167  0015                     _CCPR1	set	21
+   168  0017                     _CCP1CONbits	set	23
+   169  0010                     _T1CONbits	set	16
+   170  000B                     _INTCONbits	set	11
+   171  0007                     _PORTC	set	7
+   172  0006                     _PORTB	set	6
+   173  000C                     _PIR1bits	set	12
+   174  008C                     _PIE1bits	set	140
+   175  0087                     _TRISCbits	set	135
+   176  0086                     _TRISB	set	134
+   177                           
+   178                           	psect	cinit
+   179  000F                     start_initialization:	
+   180                           ; #config settings
+   181                           
+   182  000F                     __initialization:
+   183  000F                     end_of_initialization:	
+   184                           ;End of C runtime variable initialization code
+   185                           
+   186  000F                     __end_of__initialization:
+   187  000F  0183               	clrf	3
+   188  0010  120A  118A  2813   	ljmp	_main	;jump to C main() function
+   189                           
+   190                           	psect	cstackCOMMON
+   191  0070                     __pcstackCOMMON:
+   192  0070                     ?_kesme:
+   193  0070                     ??_kesme:	
+   194                           ; 1 bytes @ 0x0
+   195                           
+   196  0070                     ?_main:	
+   197                           ; 1 bytes @ 0x0
+   198                           
+   199                           
+   200                           ; 2 bytes @ 0x0
+   201  0070                     	ds	2
+   202  0072                     ??_main:
+   203                           
+   204                           	psect	maintext
+   205  0013                     __pmaintext:	
+   206                           ; 1 bytes @ 0x2
+   207 ;;
+   208 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   209 ;;
+   210 ;; *************** function _main *****************
+   211 ;; Defined at:
+   212 ;;		line 24 in file "capture-2.c"
+   213 ;; Parameters:    Size  Location     Type
+   214 ;;		None
+   215 ;; Auto vars:     Size  Location     Type
+   216 ;;		None
+   217 ;; Return value:  Size  Location     Type
+   218 ;;                  2   32[None  ] int 
+   219 ;; Registers used:
+   220 ;;		status,2
+   221 ;; Tracked objects:
+   222 ;;		On entry : B00/0
+   223 ;;		On exit  : 0/0
+   224 ;;		Unchanged: 0/0
+   225 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   226 ;;      Params:         0       0       0       0       0
+   227 ;;      Locals:         0       0       0       0       0
+   228 ;;      Temps:          0       0       0       0       0
+   229 ;;      Totals:         0       0       0       0       0
+   230 ;;Total ram usage:        0 bytes
+   231 ;; Hardware stack levels required when called: 1
+   232 ;; This function calls:
+   233 ;;		Nothing
+   234 ;; This function is called by:
+   235 ;;		Startup code after reset
+   236 ;; This function uses a non-reentrant model
+   237 ;;
+   238                           
+   239                           
+   240                           ;psect for function _main
+   241  0013                     _main:
+   242  0013                     l634:	
+   243                           ;incstack = 0
+   244                           ; Regs used in _main: [status,2]
+   245                           
+   246                           
+   247                           ;capture-2.c: 26:     TRISB = 0x00;
+   248  0013  1683               	bsf	3,5	;RP0=1, select bank1
+   249  0014  1303               	bcf	3,6	;RP1=0, select bank1
+   250  0015  0186               	clrf	6	;volatile
+   251  0016                     l636:
+   252                           
+   253                           ;capture-2.c: 27:     TRISCbits.TRISC0 = 1;
+   254  0016  1407               	bsf	7,0	;volatile
+   255  0017                     l638:
+   256                           
+   257                           ;capture-2.c: 28:     TRISCbits.TRISC2 = 1;
+   258  0017  1507               	bsf	7,2	;volatile
+   259                           
+   260                           ;capture-2.c: 29:     PORTB = 0x00;
+   261  0018  1283               	bcf	3,5	;RP0=0, select bank0
+   262  0019  1303               	bcf	3,6	;RP1=0, select bank0
+   263  001A  0186               	clrf	6	;volatile
+   264                           
+   265                           ;capture-2.c: 30:     PORTC = 0x00;
+   266  001B  0187               	clrf	7	;volatile
+   267  001C                     l640:
+   268                           
+   269                           ;capture-2.c: 32:     INTCONbits.GIE = 1;
+   270  001C  178B               	bsf	11,7	;volatile
+   271  001D                     l642:
+   272                           
+   273                           ;capture-2.c: 33:     INTCONbits.PEIE = 1;
+   274  001D  170B               	bsf	11,6	;volatile
+   275  001E                     l644:
+   276                           
+   277                           ;capture-2.c: 35:     PIE1bits.TMR1IE = 1;
+   278  001E  1683               	bsf	3,5	;RP0=1, select bank1
+   279  001F  1303               	bcf	3,6	;RP1=0, select bank1
+   280  0020  140C               	bsf	12,0	;volatile
+   281  0021                     l646:
+   282                           
+   283                           ;capture-2.c: 36:     PIE1bits.CCP1IE = 1;
+   284  0021  150C               	bsf	12,2	;volatile
+   285  0022                     l648:
+   286                           
+   287                           ;capture-2.c: 38:     T1CONbits.T1OSCEN = 1;
+   288  0022  1283               	bcf	3,5	;RP0=0, select bank0
+   289  0023  1303               	bcf	3,6	;RP1=0, select bank0
+   290  0024  1590               	bsf	16,3	;volatile
+   291  0025                     l650:
+   292                           
+   293                           ;capture-2.c: 39:     T1CONbits.T1SYNC = 0;
+   294  0025  1110               	bcf	16,2	;volatile
+   295  0026                     l652:
+   296                           
+   297                           ;capture-2.c: 40:     T1CONbits.TMR1CS = 1;
+   298  0026  1490               	bsf	16,1	;volatile
+   299  0027                     l654:
+   300                           
+   301                           ;capture-2.c: 41:     T1CONbits.TMR1ON = 1;
+   302  0027  1410               	bsf	16,0	;volatile
+   303  0028                     l656:
+   304                           
+   305                           ;capture-2.c: 42:     T1CONbits.T1CKPS0 = 0;
+   306  0028  1210               	bcf	16,4	;volatile
+   307  0029                     l658:
+   308                           
+   309                           ;capture-2.c: 43:     T1CONbits.T1CKPS1 = 0;
+   310  0029  1290               	bcf	16,5	;volatile
+   311  002A                     l660:
+   312                           
+   313                           ;capture-2.c: 45:     PIR1bits.TMR1IF = 0;
+   314  002A  100C               	bcf	12,0	;volatile
+   315  002B                     l662:
+   316                           
+   317                           ;capture-2.c: 46:     PIR1bits.CCP1IF = 0;
+   318  002B  110C               	bcf	12,2	;volatile
+   319  002C                     l664:
+   320                           
+   321                           ;capture-2.c: 48:     CCP1CONbits.CCP1M0 = 1;
+   322  002C  1417               	bsf	23,0	;volatile
+   323  002D                     l666:
+   324                           
+   325                           ;capture-2.c: 49:     CCP1CONbits.CCP1M1 = 0;
+   326  002D  1097               	bcf	23,1	;volatile
+   327  002E                     l668:
+   328                           
+   329                           ;capture-2.c: 50:     CCP1CONbits.CCP1M2 = 1;
+   330  002E  1517               	bsf	23,2	;volatile
+   331  002F                     l670:
+   332                           
+   333                           ;capture-2.c: 51:     CCP1CONbits.CCP1M3 = 0;
+   334  002F  1197               	bcf	23,3	;volatile
+   335  0030                     l672:
+   336                           
+   337                           ;capture-2.c: 53:     TMR1 = 1;
+   338  0030  3000               	movlw	0
+   339  0031  008F               	movwf	15	;volatile
+   340  0032  3001               	movlw	1
+   341  0033  008E               	movwf	14	;volatile
+   342                           
+   343                           ;capture-2.c: 54:     CCPR1 = 0;
+   344  0034  0195               	clrf	21	;volatile
+   345  0035  0196               	clrf	22	;volatile
+   346  0036                     l33:	
+   347                           ;capture-2.c: 56:     while(1){
+   348                           
+   349  0036                     l34:	
+   350                           ;capture-2.c: 57:     }
+   351                           
+   352  0036  2836               	goto	l33
+   353  0037  120A  118A  280C   	ljmp	start
+   354  003A                     __end_of_main:
+   355                           
+   356                           	psect	text1
+   357  003A                     __ptext1:	
+   358 ;; *************** function _kesme *****************
+   359 ;; Defined at:
+   360 ;;		line 14 in file "capture-2.c"
+   361 ;; Parameters:    Size  Location     Type
+   362 ;;		None
+   363 ;; Auto vars:     Size  Location     Type
+   364 ;;		None
+   365 ;; Return value:  Size  Location     Type
+   366 ;;                  1    wreg      void 
+   367 ;; Registers used:
+   368 ;;		wreg
+   369 ;; Tracked objects:
+   370 ;;		On entry : 0/0
+   371 ;;		On exit  : 0/0
+   372 ;;		Unchanged: 0/0
+   373 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   374 ;;      Params:         0       0       0       0       0
+   375 ;;      Locals:         0       0       0       0       0
+   376 ;;      Temps:          2       0       0       0       0
+   377 ;;      Totals:         2       0       0       0       0
+   378 ;;Total ram usage:        2 bytes
+   379 ;; Hardware stack levels used: 1
+   380 ;; This function calls:
+   381 ;;		Nothing
+   382 ;; This function is called by:
+   383 ;;		Interrupt level 1
+   384 ;; This function uses a non-reentrant model
+   385 ;;
+   386                           
+   387                           
+   388                           ;psect for function _kesme
+   389  003A                     _kesme:
+   390  003A                     i1l628:
+   391                           
+   392                           ;capture-2.c: 16:     if(PIR1bits.CCP1IF){
+   393  003A  1283               	bcf	3,5	;RP0=0, select bank0
+   394  003B  1303               	bcf	3,6	;RP1=0, select bank0
+   395  003C  1D0C               	btfss	12,2	;volatile
+   396  003D  283F               	goto	u1_21
+   397  003E  2840               	goto	u1_20
+   398  003F                     u1_21:
+   399  003F  2842               	goto	i1l632
+   400  0040                     u1_20:
+   401  0040                     i1l630:
+   402                           
+   403                           ;capture-2.c: 17:         PORTB = (unsigned char)CCPR1;
+   404  0040  0815               	movf	21,w	;volatile
+   405  0041  0086               	movwf	6	;volatile
+   406  0042                     i1l632:
+   407                           
+   408                           ;capture-2.c: 21:     PIR1bits.CCP1IF = 0;
+   409  0042  110C               	bcf	12,2	;volatile
+   410  0043                     i1l28:
+   411  0043  0871               	movf	??_kesme+1,w
+   412  0044  008A               	movwf	10
+   413  0045  0E70               	swapf	??_kesme,w
+   414  0046  0083               	movwf	3
+   415  0047  0EFE               	swapf	btemp,f
+   416  0048  0E7E               	swapf	btemp,w
+   417  0049  0009               	retfie
+   418  004A                     __end_of_kesme:
+   419  007E                     btemp	set	126	;btemp
+   420  007E                     wtemp0	set	126
+   421                           
+   422                           	psect	intentry
+   423  0004                     __pintentry:	
+   424                           ;incstack = 0
+   425                           ; Regs used in _kesme: [wreg]
+   426                           
+   427  0004                     interrupt_function:
+   428  007E                     saved_w	set	btemp
+   429  0004  00FE               	movwf	btemp
+   430  0005  0E03               	swapf	3,w
+   431  0006  00F0               	movwf	??_kesme
+   432  0007  080A               	movf	10,w
+   433  0008  00F1               	movwf	??_kesme+1
+   434  0009  120A  118A  283A   	ljmp	_kesme
+   435                           
+   436                           	psect	config
+   437                           
+   438                           ;Config register CONFIG @ 0x2007
+   439                           ;	Oscillator Selection bits
+   440                           ;	FOSC = XT, XT oscillator
+   441                           ;	Watchdog Timer Enable bit
+   442                           ;	WDTE = OFF, WDT disabled
+   443                           ;	Power-up Timer Enable bit
+   444                           ;	PWRTE = OFF, PWRT disabled
+   445                           ;	Brown-out Reset Enable bit
+   446                           ;	BOREN = OFF, BOR disabled
+   447                           ;	Low-Voltage (Single-Supply) In-Circuit Serial Programming Enable bit
+   448                           ;	LVP = OFF, RB3 is digital I/O, HV on MCLR must be used for programming
+   449                           ;	Data EEPROM Memory Code Protection bit
+   450                           ;	CPD = OFF, Data EEPROM code protection off
+   451                           ;	Flash Program Memory Write Enable bits
+   452                           ;	WRT = OFF, Write protection off; all program memory may be written to by EECON control
+   453                           ;	In-Circuit Debugger Mode bit
+   454                           ;	DEBUG = 0x1, unprogrammed default
+   455                           ;	Flash Program Memory Code Protection bit
+   456                           ;	CP = OFF, Code protection off
+   457  2007                     	org	8199
+   458  2007  3F39               	dw	16185
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14      2       2
+    BANK0            80      0       0
+    BANK1            80      0       0
+    BANK3            96      0       0
+    BANK2            96      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _kesme in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _kesme in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _kesme in BANK1
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _kesme in BANK3
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _kesme in BANK2
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 0
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (1) _kesme                                                2     2      0       0
+                                              0 COMMON     2     2      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 1
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+
+ _kesme (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMMON            E      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMMON               E      2       2       1       14.3%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+STACK                0      0       0       2        0.0%
+ABS                  0      0       0       3        0.0%
+BITBANK0            50      0       0       4        0.0%
+BITSFR3              0      0       0       4        0.0%
+SFR3                 0      0       0       4        0.0%
+BANK0               50      0       0       5        0.0%
+BITSFR2              0      0       0       5        0.0%
+SFR2                 0      0       0       5        0.0%
+BITBANK1            50      0       0       6        0.0%
+BANK1               50      0       0       7        0.0%
+BITBANK3            60      0       0       8        0.0%
+BANK3               60      0       0       9        0.0%
+BITBANK2            60      0       0      10        0.0%
+BANK2               60      0       0      11        0.0%
+DATA                 0      0       0      12        0.0%
+
+
+Microchip Technology PIC Macro Assembler V2.32 build 20210201212658 
+Symbol Table                                                                                   Wed Feb 02 01:30:23 2022
+
+                     l33 0036                       l34 0036                      l640 001C  
+                    l650 0025                      l642 001D                      l634 0013  
+                    l660 002A                      l652 0026                      l644 001E  
+                    l636 0016                      l670 002F                      l662 002B  
+                    l654 0027                      l646 0021                      l638 0017  
+                    l672 0030                      l664 002C                      l656 0028  
+                    l648 0022                      l666 002D                      l658 0029  
+                    l668 002E                     i1l28 0043                     _TMR1 000E  
+                   u1_20 0040                     u1_21 003F                     _main 0013  
+                   btemp 007E                     start 000C                    ?_main 0070  
+                  _CCPR1 0015                    i1l630 0040                    i1l632 0042  
+                  i1l628 003A                    _PORTB 0006                    _PORTC 0007  
+                  _TRISB 0086                    _kesme 003A                    pclath 000A  
+                  status 0003                    wtemp0 007E          __initialization 000F  
+           __end_of_main 003A                   ??_main 0072                   ?_kesme 0070  
+                 saved_w 007E  __end_of__initialization 000F           __pcstackCOMMON 0070  
+          __end_of_kesme 004A                  ??_kesme 0070               __pmaintext 0013  
+             __pintentry 0004                  __ptext1 003A                _T1CONbits 0010  
+   end_of_initialization 000F                _TRISCbits 0087              _CCP1CONbits 0017  
+    start_initialization 000F                ___latbits 0002           __size_of_kesme 0010  
+      interrupt_function 0004                 _PIE1bits 008C                 _PIR1bits 000C  
+          __size_of_main 0027               _INTCONbits 000B                 intlevel1 0000  
